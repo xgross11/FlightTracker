@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">FlightTracker</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="continue_text">Povolit</string>
+    <string name="permission_location">Vítejte v aplikaci FlightTracker. Pro zaznamenávání letů nejdříve povolte přístup k Vaší poloze.</string>
+    <string name="permission">Oprávnění</string>
+    <string name="reset">Reset</string>
+    <string name="stop">Stop</string>
+    <string name="start">Start</string>
+    <string name="tap_on_my_location_button">Tap on My location Button</string>
 </resources>
