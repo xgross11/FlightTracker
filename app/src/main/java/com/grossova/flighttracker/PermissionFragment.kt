@@ -55,7 +55,7 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks  {
         findNavController().navigate(R.id.action_permissionFragment_to_mapsFragment)
     }
 
-    override fun onDestroyOptionsMenu() {
+    override fun onDestroyView() {
         super.onDestroyOptionsMenu()
         _binding = null
     }
