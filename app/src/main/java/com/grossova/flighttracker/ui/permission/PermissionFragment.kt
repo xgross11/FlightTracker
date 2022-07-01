@@ -1,4 +1,4 @@
-package com.grossova.flighttracker
+package com.grossova.flighttracker.ui.permission
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.grossova.flighttracker.R
 import com.grossova.flighttracker.databinding.FragmentPermissionBinding
 import com.grossova.flighttracker.util.Permissions.hasLocationPermission
 import com.grossova.flighttracker.util.Permissions.requestLocationPermission
@@ -25,7 +26,7 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks  {
         _binding = FragmentPermissionBinding.inflate(inflater, container, false)
 
         binding.continueButton.setOnClickListener {
-            if(hasLocationPermission(requireContext())) {
+            if (hasLocationPermission(requireContext())) {
                 findNavController().navigate(R.id.action_permissionFragment_to_mapsFragment)
             }else{
                 requestLocationPermission(this)
@@ -44,7 +45,7 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks  {
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
-        if(EasyPermissions.somePermissionDenied(this, perms[0])){
+        if(EasyPermissions.somePermissionPermanentlyDenied(this, perms)){
             SettingsDialog.Builder(requireActivity()).build().show()
         }else{
             requestLocationPermission(this)
@@ -56,7 +57,7 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks  {
     }
 
     override fun onDestroyView() {
-        super.onDestroyOptionsMenu()
+        super.onDestroyView()
         _binding = null
     }
 

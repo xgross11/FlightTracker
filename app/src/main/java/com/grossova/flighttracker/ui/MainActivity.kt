@@ -1,9 +1,10 @@
-package com.grossova.flighttracker
+package com.grossova.flighttracker.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import com.grossova.flighttracker.R
 import com.grossova.flighttracker.util.Permissions.hasLocationPermission
 
 class MainActivity : AppCompatActivity() {
@@ -14,9 +15,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        navController = findNavController(R.id.navHostFragment)
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.navHostFragment) as NavHostFragment
+        navController = navHostFragment.navController
 
-        if(hasLocationPermission(this)){
+        if (hasLocationPermission(this)) {
             navController.navigate(R.id.action_permissionFragment_to_mapsFragment)
         }
 
